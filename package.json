@@ -1,0 +1,22 @@
+{
+  "name": "cit_270",
+  "version": "1.0.0",
+  "description": "Token API Creator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Somedude5/CIT_270.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Somedude5/CIT_270/issues"
+  },
+  "homepage": "https://github.com/Somedude5/CIT_270#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
