@@ -27,7 +27,7 @@ app.post('/login', (req, res) =>{
         res.send(loginToken);
     } else {
         res.status(401);//unauthorized response
-        res.send('Incorrect password for '+loginuser)
+        res.send('Incorrect password for ' + loginuser)
     }
 });
 
