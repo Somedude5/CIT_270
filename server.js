@@ -37,6 +37,7 @@ app.post('/login', async(req, res) =>{
     if (password == correctpassword){
         const loginToken = uuidv4();
         await redisClient.hSet("TokenMap",loginToken, loginUser); //addtoken to map, the 1st is the id tag, the 2nd is the info stored
+        res.cookie('stedicookie', loginToken);
         res.send(loginToken);
     }
      else {
