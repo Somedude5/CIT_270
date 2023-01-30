@@ -20,20 +20,28 @@ app.get("/", (req, res) => {
     res.send("hello bruh, this is your own pocket dimension! The Beatles...hello bruh");
 });
 
+app.get("/validate/:loginToken", async(req, res) =>{
+    const loginToken = req.params.loginToken;
+    const loginUser = await redisClient.hGet('TokenMap', loginToken);
+    res.send(loginUser);
+});
+
 app.post('/login', async(req, res) =>{
-    const loginuser = req.body.userName;
+    const loginUser = req.body.userName;
     const password = req.body.password;//Access the password data in the body
 
-    console.log('Login username: '+loginuser);
+    console.log('Login username: '+loginUser);
     
-    const correctpassword = await redisClient.hGet('UserMap',loginuser)
+    const correctpassword = await redisClient.hGet('UserMap',loginUser)
 
     if (password == correctpassword){
         const loginToken = uuidv4();
+        await redisClient.hSet("TokenMap",loginToken, loginUser); //addtoken to map, the 1st is the id tag, the 2nd is the info stored
         res.send(loginToken);
-    } else {
+    }
+     else {
         res.status(401);//unauthorized response
-        res.send('Incorrect password for ' + loginuser)
+        res.send('Incorrect password for ' + loginUser)
     }
 });
 
