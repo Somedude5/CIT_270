@@ -21,11 +21,12 @@ app.use(bodyParser.json()); //this looks for incoming data
 app.use(express.static("public")); //this is the folder for node to search through.
 
 app.get("/", (req, res) => {
-    res.send("hello bruh, this is your own pocket dimension! The Beatles...hello bruh");
+    res.send("hello bruh, this is your own pocket dimension!");
 });
 
-app.get("/validate/:loginToken", async(req, res) =>{
-    const loginToken = req.params.loginToken;
+app.get("/validate", async(req, res) =>{
+    const loginToken = req.cookies.stedicookie;
+    console.log("loginToken", loginToken);
     const loginUser = await redisClient.hGet('TokenMap', loginToken);
     res.send(loginUser);
 });
