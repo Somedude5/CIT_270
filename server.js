@@ -20,6 +20,13 @@ app.use(bodyParser.json()); //this looks for incoming data
 
 app.use(express.static("public")); //this is the folder for node to search through.
 
+app.post('/rapidsteptest', async (req, res)=>{
+    const steps = req.body;
+    await redisClient.zAdd("Steps", steps, 0);
+    console.log('Steps', steps);
+    res.send('saved');
+})
+
 app.get("/", (req, res) => {
     res.send("hello bruh, this is your own pocket dimension!");
 });

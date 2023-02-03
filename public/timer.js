@@ -5,7 +5,7 @@
     let runningstate = 0; // 1 means the timecounter is running 0 means counter stopped
     let stoptime = 0;
     let currenttime;
-    let usertoken="";//initialize to empty string
+    //let usertoken="";//initialize to empty string
     let stepsTaken = [];
     let starttime;
     let previousStepTime;
@@ -50,7 +50,7 @@
                 401: () => window.location.href="/",
             },
             headers: { "suresteps.session.token": usertoken},
-            contentType: "application/text",
+            contentType: "application/json",
             dataType: 'text'
         });
 
@@ -84,7 +84,7 @@
         let tokenEmail="";
         $.ajax({
            type: 'GET',
-            url: '/validate/'+usertoken,
+            url: '/validate/',
             success: function(data){
                if (data==""){
                  window.location="/"
