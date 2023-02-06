@@ -20,12 +20,27 @@ app.use(bodyParser.json()); //this looks for incoming data
 
 app.use(express.static("public")); //this is the folder for node to search through.
 
+app.use(async function (req, res, next){
+    var cookie = req.cookies.stedicookie;
+    if(cookie=== undefined && !req.url.includes("login") && !req.url.includes("html")&& req.url !== '/'){
+        //no: set a new cookie
+        res.status(401);
+        res.send("no cookie");
+    }
+    else {
+        //yes, cookie is already present
+        res.status(200);
+        next();
+    }
+});
+
 app.post('/rapidsteptest', async (req, res)=>{
     const steps = req.body;
-    await redisClient.zAdd("Steps", steps, 0);
+    await redisClient.zAdd('Steps',[{score:0,value:JSON.stringify(steps)}]); //the score is the index
     console.log('Steps', steps);
     res.send('saved');
 })
+
 
 app.get("/", (req, res) => {
     res.send("hello bruh, this is your own pocket dimension!");
