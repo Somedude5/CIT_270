@@ -85,7 +85,7 @@ app.post('/login', async(req, res) =>{
 // app.post('login username');
 
 https.createServer(
-    {key: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/server.key'),
+    {key: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/privkey.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/cert.pem'),
     ca: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/fullchain.pem')
 
