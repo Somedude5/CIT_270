@@ -103,7 +103,11 @@ dist
 # TernJS port file
 .tern-port
 
+*.pem
 server.cert
 server.key
 node_modules
+cert.pem
+privkey.pem
+fullchain.pem
 # the key is private whilst the cert is public
