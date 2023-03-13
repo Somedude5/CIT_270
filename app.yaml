@@ -9,27 +9,27 @@ spec:
       app: cit270parkerservice
   template:
     metadata:
-      - name: cit270parkerservice
+      name: cit270parkerservice
       labels:
         app: cit270parkerservice
     spec:
       containers:
-        - name: cit270parkerservice
+      - name: cit270parkerservice
         image: cit-270-kubernetes-379820/parker-api
         volumeMounts:
-          - name: ssl
-            mountPath: "/etc/letsencrypt/live/SSL"
+        - name: ssl
+          mountPath: "/etc/letsencrypt/live/parkerhatch.cit270.com/"
         command: ["npm"]
         args: ["run", "start"]
         resources: 
           requests: 
-            cpu: 0.125
+            cpu: "0.125"
             memory: 500Mi
           limits:
-            cpu: 0.125
+            cpu: "0.125"
             memory: 600Mi
         imagePullPolicy: Always
       volumes:
-        - name: ssl
+      - name: ssl
         secret: 
           secretName: parkercerts
