@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: cit270parkerservice
-        image: cit-270-kubernetes-379820/parker-api
+        image: gcr.io/cit-270-kubernetes-379820/parker-api
         volumeMounts:
         - name: ssl
           mountPath: "/etc/letsencrypt/live/parkerhatch.cit270.com/"
