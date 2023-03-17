@@ -12,7 +12,7 @@ const https = require('https');
 
 const fs = require('fs');
 
-const redisClient = Redis.createClient({url:"redis://127.0.0.1:6379"});
+const redisClient = Redis.createClient({url:"redis://default:FYyUaH8QssxfnLar@redis-stedi-parker:6379"});
 
 const {v4: uuidv4} = require('uuid');//generates a universely unique identifier
 
