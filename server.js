@@ -2,7 +2,9 @@ const express = require("express");
 
 const app = express();
 
-const port = 443;
+// const port = 443;
+
+const port = 3000;
 
 const bodyParser = require("body-parser");
 
@@ -77,21 +79,21 @@ app.post('/login', async(req, res) =>{
     }
 });
 
-// app.listen(port, () => {
-//     redisClient.connect();
-//     console.log("listening");
-// });
-
-// app.post('login username');
-
-https.createServer(
-    {key: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/fullchain.pem')
-
-},
-app
-).listen(port, ()=>{
+app.listen(port, () => {
     redisClient.connect();
-    console.log('listening on port: ' + port);
+    console.log("listening");
 });
+
+app.post('login username');
+
+// https.createServer(
+//     {key: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/privkey.pem'),
+//     cert: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/cert.pem'),
+//     ca: fs.readFileSync('/etc/letsencrypt/live/parkerhatch.cit270.com/fullchain.pem')
+
+// },
+// app
+// ).listen(port, ()=>{
+//     redisClient.connect();
+//     console.log('listening on port: ' + port);
+// });
